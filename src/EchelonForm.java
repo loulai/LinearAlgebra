@@ -2,27 +2,24 @@
 public class EchelonForm {
 
 	public static void main(String[] args) {
-		int[][] sampleMatrix = {{0, -3, -6, 4, 9}, {-1, -2, -1, 3, 1}, {-2, -3, 0, 3, -1},{1, 4, 5, -9, -7}};
-		System.out.println(isMatrixValid(sampleMatrix));
+		Matrix sampleM = new Matrix(new int[][]{{0, -3, -6, 4, 9}, {-1, -2, -1, 3, 1}, {-2, -3, 0, 3, -1}, {1, 4, 5, -9, -7}});
+		System.out.println(sampleM.isMatrixValid());
+		
 	}
-	
-	
 
-	public int[] findPivotPosition(int[][] m){
+	public static int[] findPivotPosition(int[][] m){
 		int pivotColumn = 0;
 		int[] pivotPosition = {0, pivotColumn}; //row, column. Row is always top one.
+		for(int col = 0; col < m[0].length; col++) { //loop through COLUMN first, from left to right
+			for(int row = 0; row < m.length; row++){
+				if(m[row][col] != 0){ //any non-zero in that column means the pivot col, coz going left to right in columns
+					pivotColumn = col;
+					break;
+				}
+			}
+		}
 		return pivotPosition;
 	}
 	
-	public static boolean isMatrixValid(int[][] m){
-		boolean isValid = true;
-		//first, basic, make sure each row has equal ints per column
-		for(int i = 0; i < (m.length - 1); i++){
-			if(m[i].length != m[i + 1].length){
-				isValid = false;
-				break;
-			}
-		}
-		return isValid;
-	}
+	
 }
