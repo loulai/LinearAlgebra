@@ -20,7 +20,7 @@ public class Matrix {
 	}
 	
 	public void printProperties(){
-		System.out.println("-------------------------------------------");
+		System.out.println("--------- PROPERTIES ---------------------");
 		printMatrix();
 		System.out.println("Number of rows    : " + this.numOfRows);
 		System.out.println("Number of columns : " + this.numOfColumns);
@@ -31,11 +31,11 @@ public class Matrix {
 	
 	public void printMatrix(){
 		for(int r = 0; r < this.numOfRows; r++){
-			System.out.print("|");
+			System.out.print("[");
 			for(int c = 0; c < this.numOfColumns; c++){
 				System.out.printf("%3d ", this.raw[r][c]);
 			}
-			System.out.print("|");
+			System.out.print("]");
 			System.out.println();
 		}
 	}
